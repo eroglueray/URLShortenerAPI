@@ -8,7 +8,6 @@ namespace URLShortenerAPI.Controllers
     [Route("[controller]")]
     public class URLShortenerController : ControllerBase
     {
-
         private readonly IURLDataManager _urlDataManager;
 
         public URLShortenerController(IURLDataManager urlDataManager)
@@ -16,13 +15,13 @@ namespace URLShortenerAPI.Controllers
             _urlDataManager= urlDataManager;
         }
 
-        [HttpPost(Name = "URLShortener")]   
+        [HttpPost("/URLShortener")]   
         public async Task<IActionResult> AddURLShortener(URLRequestDTO uRLRequestDTO)
         {
             var response = await _urlDataManager.AddURLShortenerAsync(uRLRequestDTO);
             return Ok(response);
         }
-        [HttpGet(Name = "CustomUrl")]
+        [HttpGet("/GetCustomURL")]
         public async Task<IActionResult> RedirectShortUrl([FromQuery]URLRequestDTO uRLRequestDTO)
         {
             var response = await _urlDataManager.GetCustomUrl(uRLRequestDTO);
