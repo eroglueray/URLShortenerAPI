@@ -53,7 +53,7 @@ namespace URLShortenerAPI.Data.DataManager
                 Url = result
             });
         }
-        public async Task<IResponse<URLResponseDTO>> GetCustomUrl(URLRequestDTO uRLRequestDTO)
+        public async Task<IResponse<URLResponseDTO>> GetCustomUrlAsync(URLRequestDTO uRLRequestDTO)
         {
             List<string> getAllUrl = await _urlRepository.GetAll().Select(x => x.Url).ToListAsync();
             var getUrl = await _urlRepository.GetAll().FirstOrDefaultAsync(x => x.ShortUrl.ToLower().Trim() == uRLRequestDTO.Url.ToLower().Trim());

@@ -22,9 +22,9 @@ namespace URLShortenerAPI.Controllers
             return Ok(response);
         }
         [HttpGet("/GetCustomURL")]
-        public async Task<IActionResult> RedirectShortUrl([FromQuery]URLRequestDTO uRLRequestDTO)
+        public async Task<IActionResult> GetCustomUrl([FromQuery]URLRequestDTO uRLRequestDTO)
         {
-            var response = await _urlDataManager.GetCustomUrl(uRLRequestDTO);
+            var response = await _urlDataManager.GetCustomUrlAsync(uRLRequestDTO);
             return Ok(response);
         }
     }
