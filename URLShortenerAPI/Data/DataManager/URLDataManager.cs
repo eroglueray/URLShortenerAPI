@@ -56,7 +56,7 @@ namespace URLShortenerAPI.Data.DataManager
         public async Task<IResponse<URLResponseDTO>> GetCustomUrlAsync(URLRequestDTO uRLRequestDTO)
         {
             List<string> getAllUrl = await _urlRepository.GetAll().Select(x => x.Url).ToListAsync();
-            var getUrl = await _urlRepository.GetAll().FirstOrDefaultAsync(x => x.ShortUrl.ToLower().Trim() == uRLRequestDTO.Url.ToLower().Trim());
+            var getUrl = await _urlRepository.GetAll().FirstOrDefaultAsync(x => x.Url.ToLower().Trim() == uRLRequestDTO.Url.ToLower().Trim());
             // Check the custom URL
             if (getAllUrl.Contains(uRLRequestDTO.Url))
             {
